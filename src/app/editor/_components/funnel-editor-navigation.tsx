@@ -1,18 +1,3 @@
-// import { TooltipProvider } from "@/components/ui/tooltip";
-// import clsx from "clsx";
-// export default function HomePage() {
-//   return (
-//     <TooltipProvider>
-//       <nav
-//         className={clsx(
-//           "border-b-[1px] flex items-center justify-between p-6 gap-2 transition-all",
-//           { "!h-0 !p-0 !overflow-hidden": state.editor.previewMode }
-//         )}
-//       ></nav>
-//     </TooltipProvider>
-//   );
-// }
-
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
