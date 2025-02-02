@@ -125,7 +125,7 @@ const FunnelEditorNavigation = ({
         )}
       >
         <aside className="flex items-center gap-4 max-w-[260px] w-[300px]">
-          <Link href={`/subaccount/${subaccountId}/funnels/${funnelId}`}>
+          <Link href={`/`}>
             <ArrowLeftCircle />
           </Link>
           <div className="flex flex-col w-full ">
