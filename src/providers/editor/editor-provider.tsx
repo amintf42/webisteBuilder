@@ -369,7 +369,7 @@ export const EditorContext = createContext<{
   dispatch: Dispatch<EditorAction>;
   subaccountId: string;
   funnelId: string;
-  pageDetails: null;
+  pageDetails: PageDetails | null;
 }>({
   state: initialState,
   dispatch: () => undefined,
