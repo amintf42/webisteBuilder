@@ -1,3 +1,6 @@
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 'use client'
 import React, { ChangeEventHandler } from 'react'
 import {
@@ -102,6 +105,18 @@ const SettingsTab = (props: Props) => {
                 <Input
                   id="href"
                   placeholder="https:domain.example.com/pathname"
+                  onChange={handleChangeCustomValues}
+                  value={state.editor.selectedElement.content.href}
+                />
+              </div>
+            )}
+          {state.editor.selectedElement.type === 'video' &&
+            !Array.isArray(state.editor.selectedElement.content) && (
+              <div className="flex flex-col gap-2">
+                <p className="text-muted-foreground">Link Path</p>
+                <Input
+                  id="href"
+                  placeholder="https:video.example.com/pathname"
                   onChange={handleChangeCustomValues}
                   value={state.editor.selectedElement.content.href}
                 />

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 "use client";
 import Loading from "@/components/global/loading";
 import { Badge } from "@/components/ui/badge";

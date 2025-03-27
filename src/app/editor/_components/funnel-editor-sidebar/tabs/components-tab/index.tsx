@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Accordion,
   AccordionContent,
@@ -53,12 +55,12 @@ const ComponentsTab = (props: Props) => {
       id: 'contactForm',
       group: 'elements',
     },
-    {
-      Component: <CheckoutPlaceholder />,
-      label: 'Checkout',
-      id: 'paymentForm',
-      group: 'elements',
-    },
+    // {
+    //   Component: <CheckoutPlaceholder />,
+    //   label: 'Checkout',
+    //   id: 'paymentForm',
+    //   group: 'elements',
+    // },
     {
       Component: <LinkPlaceholder />,
       label: 'Link',

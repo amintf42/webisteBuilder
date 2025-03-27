@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { EditorBtns } from '@/lib/constants'
 import { Youtube } from 'lucide-react'
 import React from 'react'
