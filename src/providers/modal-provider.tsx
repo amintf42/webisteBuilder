@@ -5,11 +5,9 @@ interface ModalProviderProps {
   children: React.ReactNode;
 }
 
-// ساده‌سازی شده بدون وابستگی به دیتابیس
 export type ModalData = {
   title?: string;
   description?: string;
-  // هر داده دیگه‌ای که نیاز دارید اینجا اضافه کنید
 };
 
 type ModalContextType = {

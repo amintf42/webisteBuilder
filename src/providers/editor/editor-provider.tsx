@@ -185,6 +185,16 @@ const editorReducer = (
               type: null,
             },
       };
+      // const updatedEditorStateWithUpdate = {
+      //   ...state.editor,
+      //   elements: updatedElements,
+      //   selectedElement: UpdatedElementIsSelected
+      //     ? {
+      //         ...state.editor.selectedElement,
+      //         ...action.payload.elementDetails,
+      //       }
+      //     : state.editor.selectedElement,
+      // };
 
       const updatedHistoryWithUpdate = [
         ...state.history.history.slice(0, state.history.currentIndex + 1),
@@ -327,6 +337,29 @@ const editorReducer = (
           liveMode: !!action.payload.withLive,
         },
       };
+
+    // case "LOAD_DATA":
+    //   const loadedElements =
+    //     action.payload.elements || initialEditorState.elements;
+
+    //   return {
+    //     ...initialState,
+    //     editor: {
+    //       ...initialState.editor,
+    //       elements: loadedElements,
+    //       liveMode: !!action.payload.withLive,
+    //       selectedElement:
+    //         loadedElements.length > 0
+    //           ? loadedElements[0]
+    //           : {
+    //               id: "",
+    //               content: [],
+    //               name: "",
+    //               styles: {},
+    //               type: null,
+    //             },
+    //     },
+    //   };
 
     case "SET_FUNNELPAGE_ID":
       const { funnelPageId } = action.payload;

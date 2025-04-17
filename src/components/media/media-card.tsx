@@ -1,7 +1,7 @@
-'use client'
-import { Media } from '@prisma/client'
-import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+"use client";
+import { Media } from "@prisma/client";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -20,34 +20,68 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import { Copy, MoreHorizontal, Trash } from 'lucide-react'
-import Image from 'next/image'
-import { deleteMedia, saveActivityLogsNotification } from '@/lib/queries'
-import { toast } from '../ui/use-toast'
+} from "@/components/ui/alert-dialog";
+import { Copy, MoreHorizontal, Trash } from "lucide-react";
+import Image from "next/image";
+import { deleteMedia, saveActivityLogsNotification } from "@/lib/queries";
+import { toast } from "../ui/use-toast";
 
-type Props = { file: Media }
+type Props = { file: Media };
 
 const MediaCard = ({ file }: Props) => {
-  const [loading, setLoading] = useState(false)
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const newFile = e.target.files[0];
+      setSelectedFile(newFile);
+    }
+  };
 
   return (
     <AlertDialog>
       <DropdownMenu>
         <article className="border w-full rounded-lg bg-slate-900">
           <div className="relative w-full h-40">
-            <Image
+            {/* <Image
               src={file.link}
               alt="preview image"
               fill
               className="object-cover rounded-lg"
-            />
+            /> */}
+            {file.link ? (
+              <Image
+                src={file.link}
+                alt="preview image"
+                fill
+                className="object-cover rounded-lg"
+              />
+            ) : file.previewUrl ? (
+              <img
+                src={file.previewUrl}
+                alt="uploaded image preview"
+                className="object-cover rounded-lg w-full h-full"
+              />
+            ) : (
+              <img
+                src="/default-image.jpg"
+                alt="default image"
+                className="object-cover rounded-lg w-full h-full"
+              />
+            )}
           </div>
           <p className="opacity-0 h-0 w-0">{file.name}</p>
           <div className="p-4 relative">
-            <p className="text-muted-foreground">
+            {/* <p className="text-muted-foreground">
               {file.createdAt.toDateString()}
+            </p> */}
+            <p className="text-muted-foreground">
+              {file.createdAt
+                ? new Date(file.createdAt).toDateString()
+                : "No Date Available"}
             </p>
             <p>{file.name}</p>
             <div className="absolute top-4 right-4 p-[1px] cursor-pointer ">
@@ -63,8 +97,8 @@ const MediaCard = ({ file }: Props) => {
             <DropdownMenuItem
               className="flex gap-2"
               onClick={() => {
-                navigator.clipboard.writeText(file.link)
-                toast({ title: 'Copied To Clipboard' })
+                navigator.clipboard.writeText(file.link);
+                toast({ title: "Copied To Clipboard" });
               }}
             >
               <Copy size={15} /> Copy Image Link
@@ -93,19 +127,19 @@ const MediaCard = ({ file }: Props) => {
             disabled={loading}
             className="bg-destructive hover:bg-destructive"
             onClick={async () => {
-              setLoading(true)
-              const response = await deleteMedia(file.id)
-              await saveActivityLogsNotification({
-                agencyId: undefined,
-                description: `Deleted a media file | ${response?.name}`,
-                subaccountId: response.subAccountId,
-              })
+              setLoading(true);
+              // const response = await deleteMedia(file.id);
+              // await saveActivityLogsNotification({
+              //   agencyId: undefined,
+              //   description: `Deleted a media file | ${response?.name}`,
+              //   subaccountId: response.subAccountId,
+              // });
               toast({
-                title: 'Deleted File',
-                description: 'Successfully deleted the file',
-              })
-              setLoading(false)
-              router.refresh()
+                title: "Deleted File",
+                description: "Successfully deleted the file",
+              });
+              setLoading(false);
+              router.refresh();
             }}
           >
             Delete
@@ -113,7 +147,7 @@ const MediaCard = ({ file }: Props) => {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
-}
+  );
+};
 
-export default MediaCard
+export default MediaCard;

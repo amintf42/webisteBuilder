@@ -6,6 +6,7 @@ import VideoComponent from "./video";
 import LinkComponent from "./link-component";
 import ContactFormComponent from "./contact-form-component";
 import Checkout from "./checkout";
+import Slider from "./slider";
 
 type Props = {
   element: EditorElement;
@@ -19,6 +20,8 @@ const Recursive = ({ element }: Props) => {
       return <Container element={element} />;
     case "video":
       return <VideoComponent element={element} />;
+    case "slider":
+      return <Slider element={element} />;
     case "contactForm":
       return <ContactFormComponent element={element} />;
     case "paymentForm":

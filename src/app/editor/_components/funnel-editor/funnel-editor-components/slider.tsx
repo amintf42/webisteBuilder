@@ -10,7 +10,7 @@ import { Trash } from "lucide-react";
 
 type Props = { element: EditorElement };
 
-const Container = ({ element }: Props) => {
+const Slider = ({ element }: Props) => {
   const { id, content, name, styles, type } = element;
   const { dispatch, state } = useEditor();
 
@@ -206,7 +206,7 @@ const Container = ({ element }: Props) => {
       onDragOver={handleDragOver}
       draggable={type !== "__body"}
       onClick={handleOnClickBody}
-      onDragStart={(e) => handleDragStart(e, "container")}
+      onDragStart={(e) => handleDragStart(e, "slider")}
     >
       <Badge
         className={clsx(
@@ -237,4 +237,4 @@ const Container = ({ element }: Props) => {
   );
 };
 
-export default Container;
+export default Slider;

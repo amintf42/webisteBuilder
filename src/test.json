@@ -1,0 +1,95 @@
+[
+  {
+    "content": [
+      {
+        "content": [],
+        "id": "e680df94-fb18-49d2-886a-45e4b69ba6a0",
+        "name": "Container",
+        "styles": {
+          "backgroundPosition": "center",
+          "objectFit": "cover",
+          "backgroundRepeat": "no-repeat",
+          "textAlign": "left",
+          "opacity": "100%"
+        },
+        "type": "container"
+      },
+      {
+        "content": [],
+        "id": "c5526a35-9fec-4edc-9162-6fc62e4cd447",
+        "name": "Container",
+        "styles": {
+          "backgroundPosition": "center",
+          "objectFit": "cover",
+          "backgroundRepeat": "no-repeat",
+          "textAlign": "left",
+          "opacity": "100%"
+        },
+        "type": "container"
+      },
+      {
+        "content": [
+          {
+            "content": [],
+            "id": "7bc333d2-d9c2-4f95-a7ce-fc3c7dff66da",
+            "name": "Container",
+            "styles": {
+              "backgroundPosition": "center",
+              "objectFit": "cover",
+              "backgroundRepeat": "no-repeat",
+              "textAlign": "left",
+              "opacity": "100%",
+              "width": "100%"
+            },
+            "type": "container"
+          },
+          
+          {
+            "content": [
+              {
+                "content": { "innerText": "Text Eleasdasaddment" },
+                "id": "7c076eb0-0dc5-4084-a904-9a47ef8a17e2",
+                "name": "Text",
+                "styles": {
+                  "color": "white",
+                  "backgroundPosition": "center",
+                  "objectFit": "cover",
+                  "backgroundRepeat": "no-repeat",
+                  "textAlign": "left",
+                  "opacity": "100%"
+                },
+                "type": "text"
+              }
+            ],
+            "id": "887c8eb9-70ed-4036-b021-c95ee4e707d7",
+            "name": "Container",
+            "styles": {
+              "backgroundPosition": "center",
+              "objectFit": "cover",
+              "backgroundRepeat": "no-repeat",
+              "textAlign": "left",
+              "opacity": "100%",
+              "width": "100%"
+            },
+            "type": "container"
+          }
+        ],
+        "id": "bdac2614-030a-40dc-8ff0-b5c6775f522d",
+        "name": "Two Columns",
+        "styles": {
+          "backgroundPosition": "center",
+          "objectFit": "cover",
+          "backgroundRepeat": "no-repeat",
+          "textAlign": "left",
+          "opacity": "100%",
+          "display": "flex"
+        },
+        "type": "2Col"
+      }
+    ],
+    "id": "__body",
+    "name": "Body",
+    "styles": {},
+    "type": "__body"
+  }
+]

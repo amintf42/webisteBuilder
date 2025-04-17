@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { domToJSON } from '@/src/utils/domToJSON';
+import { domToJSON } from "@/utils/domToJson";
+import { useAppDispatch } from "@/app/hooks";
+import { setStructure } from "@/app/editor/editorSlice";
 import {
   Tooltip,
   TooltipContent,
@@ -27,7 +31,8 @@ import {
 import Link from "next/link";
 // import { useRouter } from 'next/navigation'
 // import React, { FocusEventHandler, useEffect } from 'react'
-import React from "react";
+import React, { useRef } from "react";
+import { useEditorRef } from "../editor-ref-context";
 // import { toast } from 'sonner'
 
 type Props = {
@@ -89,6 +94,49 @@ const FunnelEditorNavigation = ({
 
   const handleRedo = () => {
     dispatch({ type: "REDO" });
+  };
+
+  // const editorRef = useRef<HTMLDivElement>(null);
+  const editorRef = useEditorRef();
+
+  const dispatc = useAppDispatch();
+
+  // const handleSave = () => {
+  //   const editor = document.getElementById("editor");
+  //   if (!editor) {
+  //     console.error("editor not found");
+  //     return;
+  //   }
+
+  //   const json = domToJSON(editor);
+  //   dispatc(setStructure(json));
+  //   console.log("json structure:", JSON.stringify(json, null, 2));
+  // };
+
+  // const handleSave = () => {
+  //   if (!editorRef.current) {
+  //     console.error("editor not found");
+  //     return;
+  //   }
+
+  //   const json = domToJSON(editorRef.current);
+  //   dispatc(setStructure(json));
+  // };
+
+  const handleSave = () => {
+    const editor = editorRef.current;
+    if (!editor) {
+      console.error("Editor not found");
+      return;
+    }
+
+    const json = domToJSON(editor);
+    localStorage.setItem("my-template", JSON.stringify(json));
+    console.log(json);
+
+    // const json = domToJSON(editor);
+    // console.log("Saved JSON", json);
+    // dispatch(setStructure(json))
   };
 
   // const handleOnSave = async () => {
@@ -236,7 +284,7 @@ const FunnelEditorNavigation = ({
             </span>
           </div>
           {/* <Button onClick={handleOnSave}>Save</Button> */}
-          <Button>Save</Button>
+          <Button onClick={handleSave}>Save</Button>
         </aside>
       </nav>
     </TooltipProvider>
