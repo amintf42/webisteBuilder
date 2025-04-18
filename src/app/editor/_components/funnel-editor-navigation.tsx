@@ -33,6 +33,7 @@ import Link from "next/link";
 // import React, { FocusEventHandler, useEffect } from 'react'
 import React, { useRef } from "react";
 import { useEditorRef } from "../editor-ref-context";
+import { getFunnelPageDetails } from "@/lib/queries";
 // import { toast } from 'sonner'
 
 type Props = {
@@ -130,6 +131,7 @@ const FunnelEditorNavigation = ({
       return;
     }
 
+    console.log(editor);
     const json = domToJSON(editor);
     localStorage.setItem("my-template", JSON.stringify(json));
     console.log(json);
@@ -139,31 +141,34 @@ const FunnelEditorNavigation = ({
     // dispatch(setStructure(json))
   };
 
-  // const handleOnSave = async () => {
-  //   const content = JSON.stringify(state.editor.elements)
-  //   try {
-  //     const response = await upsertFunnelPage(
-  //       subaccountId,
-  //       {
-  //         ...funnelPageDetails,
-  //         content,
-  //       },
-  //       funnelId
-  //     )
-  //     await saveActivityLogsNotification({
-  //       agencyId: undefined,
-  //       description: `Updated a funnel page | ${response?.name}`,
-  //       subaccountId: subaccountId,
-  //     })
-  //     toast('Success', {
-  //       description: 'Saved Editor',
-  //     })
-  //   } catch (error) {
-  //     toast('Oppse!', {
-  //       description: 'Could not save editor',
-  //     })
-  //   }
-  // }
+  const handleOnSave = async () => {
+    const content = JSON.stringify(state.editor.elements);
+    localStorage.setItem("new-my-template", content);
+    // console.log(content);
+    // console.log(funnelPageDetails)
+    // try {
+    //   const response = await upsertFunnelPage(
+    //     subaccountId,
+    //     {
+    //       ...funnelPageDetails,
+    //       content,
+    //     },
+    //     funnelId
+    //   )
+    //   await saveActivityLogsNotification({
+    //     agencyId: undefined,
+    //     description: `Updated a funnel page | ${response?.name}`,
+    //     subaccountId: subaccountId,
+    //   })
+    //   toast('Success', {
+    //     description: 'Saved Editor',
+    //   })
+    // } catch (error) {
+    //   toast('Oppse!', {
+    //     description: 'Could not save editor',
+    //   })
+    // }
+  };
 
   return (
     <TooltipProvider>
@@ -283,8 +288,8 @@ const FunnelEditorNavigation = ({
               {/* Last updated {funnelPageDetails.updatedAt.toLocaleDateString()} */}
             </span>
           </div>
-          {/* <Button onClick={handleOnSave}>Save</Button> */}
-          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={handleOnSave}>Save</Button>
+          {/* <Button onClick={handleSave}>Save</Button> */}
         </aside>
       </nav>
     </TooltipProvider>

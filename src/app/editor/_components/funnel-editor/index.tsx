@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-// import { getFunnelPageDetails } from '@/lib/queries'
+import { getFunnelPageDetails } from "@/lib/queries";
 import { useEditor } from "@/providers/editor/editor-provider";
 import clsx from "clsx";
 import { EyeOff } from "lucide-react";
@@ -47,18 +47,21 @@ const FunnelEditor = ({ funnelPageId, liveMode }: Props) => {
 
   //CHALLENGE: make this more performant
   useEffect(() => {
-    // const fetchData = async () => {
-    //   const response = await getFunnelPageDetails(funnelPageId)
-    //   if (!response) return
-    //   dispatch({
-    //     type: 'LOAD_DATA',
-    //     payload: {
-    //       elements: response.content ? JSON.parse(response?.content) : '',
-    //       withLive: !!liveMode,
-    //     },
-    //   })
-    // }
-    // fetchData()
+    const fetchData = async () => {
+      // const response = await getFunnelPageDetails(funnelPageId);
+      const response = localStorage.getItem("new-my-template");
+      // console.log("response111", response[0].);
+
+      if (!response) return;
+      dispatch({
+        type: "LOAD_DATA",
+        payload: {
+          elements: response ? JSON.parse(response) : "",
+          withLive: !!liveMode,
+        },
+      });
+    };
+    fetchData();
   }, [funnelPageId]);
 
   const handleClick = () => {

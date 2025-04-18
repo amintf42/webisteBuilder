@@ -17,6 +17,7 @@ const Container = ({ element }: Props) => {
   const handleOnDrop = (e: React.DragEvent, type: string) => {
     e.stopPropagation();
     const componentType = e.dataTransfer.getData("componentType") as EditorBtns;
+    console.log("component type", componentType);
 
     switch (componentType) {
       case "text":
@@ -33,6 +34,24 @@ const Container = ({ element }: Props) => {
                 ...defaultStyles,
               },
               type: "text",
+            },
+          },
+        });
+        break;
+      case "slider":
+        dispatch({
+          type: "ADD_ELEMENT",
+          payload: {
+            containerId: id,
+            elementDetails: {
+              content: { innerText: "Text Element" },
+              id: v4(),
+              name: "Slider",
+              styles: {
+                color: "black",
+                ...defaultStyles,
+              },
+              type: "slider",
             },
           },
         });
