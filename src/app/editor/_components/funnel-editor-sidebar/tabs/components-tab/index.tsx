@@ -38,6 +38,7 @@ const ComponentsTab = (props: Props) => {
       id: "slider",
       group: "elements",
     },
+
     {
       Component: <ContainerPlaceholder />,
       label: "Container",

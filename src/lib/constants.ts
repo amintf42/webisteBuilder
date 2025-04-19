@@ -27,6 +27,8 @@ import Tune from "@/components/icons/tune";
 import Video from "@/components/icons/video_recorder";
 import Wallet from "@/components/icons/wallet";
 import Warning from "@/components/icons/warning";
+import SliderIcon from "@/components/icons/slider";
+
 export const pricingCards = [
   {
     title: "Starter",
@@ -206,6 +208,11 @@ export const icons = [
     value: "clipboardIcon",
     label: "Clipboard Icon",
     path: ClipboardIcon,
+  },
+  {
+    value: "slider",
+    label: "Slider",
+    path: SliderIcon,
   },
 ];
 

@@ -243,7 +243,19 @@
 
 "use client";
 import { Badge } from "@/components/ui/badge";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+
 // import { EditorBtns, defaultStyles } from "@/lib/constants";
+
+// Default theme
+import "@splidejs/react-splide/css";
+
+// or other themes
+import "@splidejs/react-splide/css/skyblue";
+import "@splidejs/react-splide/css/sea-green";
+
+// or only core styles
+import "@splidejs/react-splide/css/core";
 
 import { EditorElement, useEditor } from "@/providers/editor/editor-provider";
 import clsx from "clsx";
@@ -439,27 +451,181 @@ const Slider = (props: Props) => {
             {state.editor.selectedElement.name}
           </Badge>
         )}
-      <p
-        className="text-red-400 w-full"
-        contentEditable={!state.editor.liveMode}
-        onBlur={(e) => {
-          const spanElement = e.target as HTMLSpanElement;
-          dispatch({
-            type: "UPDATE_ELEMENT",
-            payload: {
-              elementDetails: {
-                ...props.element,
-                content: {
-                  innerText: spanElement.innerText,
+      <div
+        className="text-red-200 w-full"
+        // contentEditable={!state.editor.liveMode}
+        // onBlur={(e) => {
+        //   const spanElement = e.target as HTMLSpanElement;
+        //   dispatch({
+        //     type: "UPDATE_ELEMENT",
+        //     payload: {
+        //       elementDetails: {
+        //         ...props.element,
+        //         content: {
+        //           innerText: spanElement.innerText,
+        //         },
+        //       },
+        //     },
+        //   });
+        // }}
+      >
+        {/* {!Array.isArray(props.element.content) &&
+          props.element.content.innerText} */}
+        <Splide
+          aria-label="My Favorite Images"
+          options={{
+            perPage: 4,
+            perMove: 1,
+            gap: "1.5rem",
+            pagination: true,
+            type: "loop",
+          }}
+        >
+          <SplideSlide>
+            <img src="image1.jpg" alt="Image 5" />
+            <h1
+              className="text-blue-600"
+              contentEditable={!state.editor.liveMode}
+              onBlur={(e) => {
+                const spanElement = e.target as HTMLSpanElement;
+                dispatch({
+                  type: "UPDATE_ELEMENT",
+                  payload: {
+                    elementDetails: {
+                      ...props.element,
+                      content: {
+                        innerText: spanElement.innerText,
+                      },
+                    },
+                  },
+                });
+              }}
+            >
+              {!Array.isArray(props.element.content) &&
+                props.element.content.innerText}
+            </h1>
+          </SplideSlide>
+          <SplideSlide>
+            <img src="image1.jpg" alt="Image 5" />
+            <h1
+              className="text-blue-600"
+              contentEditable={!state.editor.liveMode}
+              onBlur={(e) => {
+                const spanElement = e.target as HTMLSpanElement;
+                dispatch({
+                  type: "UPDATE_ELEMENT",
+                  payload: {
+                    elementDetails: {
+                      ...props.element,
+                      content: {
+                        innerText: spanElement.innerText,
+                      },
+                    },
+                  },
+                });
+              }}
+            >
+              {!Array.isArray(props.element.content) &&
+                props.element.content.innerText}
+            </h1>
+          </SplideSlide>{" "}
+          <SplideSlide>
+            <img src="image1.jpg" alt="Image 5" />
+            <h1
+              className="text-blue-600"
+              contentEditable={!state.editor.liveMode}
+              onBlur={(e) => {
+                const spanElement = e.target as HTMLSpanElement;
+                dispatch({
+                  type: "UPDATE_ELEMENT",
+                  payload: {
+                    elementDetails: {
+                      ...props.element,
+                      content: {
+                        innerText: spanElement.innerText,
+                      },
+                    },
+                  },
+                });
+              }}
+            >
+              {!Array.isArray(props.element.content) &&
+                props.element.content.innerText}
+            </h1>
+          </SplideSlide>{" "}
+          <SplideSlide>
+            <img src="image1.jpg" alt="Image 5" />
+            <h1
+              className="text-blue-600"
+              contentEditable={!state.editor.liveMode}
+              onBlur={(e) => {
+                const spanElement = e.target as HTMLSpanElement;
+                dispatch({
+                  type: "UPDATE_ELEMENT",
+                  payload: {
+                    elementDetails: {
+                      ...props.element,
+                      content: {
+                        innerText: spanElement.innerText,
+                      },
+                    },
+                  },
+                });
+              }}
+            >
+              {!Array.isArray(props.element.content) &&
+                props.element.content.innerText}
+            </h1>
+          </SplideSlide>{" "}
+          <SplideSlide>
+            <img src="image1.jpg" alt="Image 5" />
+            <h1
+              className="text-blue-600"
+              contentEditable={!state.editor.liveMode}
+              onBlur={(e) => {
+                const spanElement = e.target as HTMLSpanElement;
+                dispatch({
+                  type: "UPDATE_ELEMENT",
+                  payload: {
+                    elementDetails: {
+                      ...props.element,
+                      content: {
+                        innerText: spanElement.innerText,
+                      },
+                    },
+                  },
+                });
+              }}
+            >
+              {!Array.isArray(props.element.content) &&
+                props.element.content.innerText}
+            </h1>
+          </SplideSlide>
+        </Splide>
+      </div>
+
+      {!state.editor.liveMode && (
+        <button
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={() => {
+            const newSlide = {
+              image: "",
+              title: "عنوان جدید",
+            };
+            dispatch({
+              type: "UPDATE_ELEMENT",
+              payload: {
+                elementDetails: {
+                  ...props.element,
+                  content: [...(props.element.content as any[]), newSlide],
                 },
               },
-            },
-          });
-        }}
-      >
-        {!Array.isArray(props.element.content) &&
-          props.element.content.innerText}
-      </p>
+            });
+          }}
+        >
+          + افزودن اسلاید
+        </button>
+      )}
       {state.editor.selectedElement.id === props.element.id &&
         !state.editor.liveMode && (
           <div className="absolute bg-primary px-2.5 py-1 text-xs font-bold -top-[25px] -right-[1px] rounded-none rounded-t-lg !text-white">

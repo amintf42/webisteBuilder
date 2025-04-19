@@ -1,6 +1,6 @@
 import { EditorBtns } from "@/lib/constants";
 import { Slider } from "@radix-ui/react-slider";
-import { Link2Icon, TypeIcon } from "lucide-react";
+import { FileSliders, TypeIcon } from "lucide-react";
 import React from "react";
 
 type Props = {};
@@ -16,7 +16,8 @@ const SliderPlaceholder = (props: Props) => {
       onDragStart={(e) => handleDragStart(e, "slider")}
       className=" h-14 w-14 bg-muted rounded-lg flex items-center justify-center"
     >
-      <Link2Icon size={40} className="text-muted-foreground" />
+      {/* <Link2Icon size={40} className="text-muted-foreground" /> */}
+      <FileSliders size={40} className="text-muted-foreground" />
     </div>
   );
 };
